@@ -18,9 +18,9 @@ function loginUser(userData) {
   return instance.post('login', userData);
 }
 
-function getPosts(token) {
-  instance.token = token;
-  return instance.get('posts');
-}
+// function getPosts(token) {
+//   instance.token = token;
+//   return instance.get('posts');
+// }
 
-export { registerUser, loginUser, getPosts };
+export { registerUser, loginUser };

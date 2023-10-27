@@ -55,7 +55,9 @@ export default {
           username: this.username,
           password: this.password,
         };
-        const { data } = await loginUser(userData);
+        const response = await loginUser(userData);
+        console.log(response);
+        const data = response.data;
         console.log(data.user.username);
         this.$store.commit('setUsername', data.user.username);
         this.$store.commit('setToken', data.user.username);
