@@ -1,5 +1,5 @@
 <template lang="">
-  <div>demo</div>
+  <div>Page is not found</div>
 </template>
 <script>
 export default {};
