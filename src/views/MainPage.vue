@@ -7,7 +7,18 @@
 </template>
 
 <script>
-export default {};
+// import store from '@store/index';
+
+// export default {
+//   data() {
+//     return {};
+//   },
+//   methods: {
+//     getPosts: {
+
+//     }
+//   },
+// };
 </script>
 
 <style></style>
