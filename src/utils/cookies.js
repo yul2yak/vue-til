@@ -14,6 +14,7 @@ function getAuthFromCookie() {
 }
 
 function getUserFromCookie() {
+  console.log(document.cookie);
   return document.cookie.replace(
     /(?:(?:^|.*;\s*)til_user\s*=\s*([^;]*).*$)|^.*$/,
     '$1',
