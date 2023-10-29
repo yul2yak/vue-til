@@ -1,4 +1,4 @@
-<template>
+<template lang="">
   <div class="contents">
     <h1 class="page-header">Create Post</h1>
     <div class="form-wrapper">
@@ -10,22 +10,18 @@
         <div>
           <label for="contents">Contents:</label>
           <textarea id="contents" type="text" rows="5" v-model="contents" />
-          <p
-            v-if="!isContentsValid"
-            class="validation-text warning isContentTooLong"
-          >
-            Contents length must be less than 250
+          <p v-if="!isContentValid" class="validation-text warning">
+            Contents must be less than 250
           </p>
         </div>
-        <button type="submit" class="btn">Create</button>
+        <button type="submit" class="btn" :disabled="!title || !contents">
+          Create
+        </button>
       </form>
-      <p class="log">
-        {{ logMessage }}
-      </p>
+      <p class="log">{{ logMessage }}</p>
     </div>
   </div>
 </template>
-
 <script>
 import { createPost } from '@/api/posts';
 
@@ -38,18 +34,18 @@ export default {
     };
   },
   computed: {
-    isContentsValid() {
-      return this.contents.length <= 200;
+    isContentValid() {
+      return this.contents.length < 250;
     },
   },
   methods: {
     async submitForm() {
       try {
-        const response = await createPost({
+        const { data } = await createPost({
           title: this.title,
           contents: this.contents,
         });
-        console.log(response);
+        console.log(data);
         this.$router.push('/main');
       } catch (error) {
         console.log(error.response.data.message);
@@ -59,7 +55,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .form-wrapper .form {
   width: 100%;
