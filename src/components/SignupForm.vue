@@ -14,7 +14,14 @@
           <label for="nickname">nickname: </label>
           <input id="nickname" type="text" v-model="nickname" />
         </div>
-        <button type="submit" class="btn">회원 가입</button>
+        <button
+          type="submit"
+          class="btn"
+          :disabled="!username || !password || !nickname"
+          :class="!username || !password || !nickname ? 'disabled' : null"
+        >
+          회원 가입
+        </button>
       </form>
       <p class="log">{{ logMessage }}</p>
     </div>
